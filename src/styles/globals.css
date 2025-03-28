@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-rgb: 245, 247, 250;
+  }
+  
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
+  }
+  
+  /* Custom scrollbar for code editor */
+  .code-editor::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .code-editor::-webkit-scrollbar-thumb {
+    background-color: rgba(99, 102, 241, 0.5);
+    border-radius: 5px;
+  }
+  
+  .code-editor::-webkit-scrollbar-track {
+    background-color: rgba(17, 24, 39, 0.2);
+  }

@@ -1,0 +1,73 @@
+programming-learning-app/
+├── .gitignore
+├── package.json
+├── next.config.js
+├── tailwind.config.js
+├── postcss.config.js
+├── tsconfig.json
+├── README.md
+├── public/
+│   ├── favicon.ico
+│   ├── assets/
+│   │   ├── images/
+│   │   │   ├── courses/
+│   │   │   ├── avatars/
+│   │   │   └── icons/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx              # Root layout
+│   │   ├── page.tsx                # Home page
+│   │   ├── courses/
+│   │   │   ├── page.tsx            # Courses listing
+│   │   │   ├── [id]/
+│   │   │   │   └── page.tsx        # Course detail
+│   │   ├── practice/
+│   │   │   ├── page.tsx            # Practice challenges listing
+│   │   │   ├── [id]/
+│   │   │   │   └── page.tsx        # Practice challenge
+│   │   ├── profile/
+│   │   │   └── page.tsx            # User profile
+│   │   ├── onboarding/
+│   │   │   └── page.tsx            # Onboarding flow
+│   ├── components/
+│   │   ├── ui/                     # Reusable UI components
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   ├── Input.tsx
+│   │   │   ├── Progress.tsx
+│   │   │   └── ...
+│   │   ├── layout/                 # Layout components
+│   │   │   ├── BottomNavigation.tsx
+│   │   │   ├── Header.tsx
+│   │   │   ├── SideMenu.tsx
+│   │   │   └── ...
+│   │   ├── courses/                # Course-related components
+│   │   │   ├── CourseCard.tsx
+│   │   │   ├── LessonList.tsx
+│   │   │   └── ...
+│   │   ├── practice/               # Practice-related components
+│   │   │   ├── CodeEditor.tsx
+│   │   │   ├── ConsoleOutput.tsx
+│   │   │   └── ...
+│   │   └── profile/                # Profile-related components
+│   │       ├── AchievementCard.tsx
+│   │       ├── BadgeList.tsx
+│   │       └── ...
+│   ├── contexts/                   # React Context providers
+│   │   ├── AuthContext.tsx
+│   │   ├── CourseProgressContext.tsx
+│   │   └── ...
+│   ├── hooks/                      # Custom React hooks
+│   │   ├── useAuth.ts
+│   │   ├── useCourseProgress.ts
+│   │   └── ...
+│   ├── lib/                        # Utility functions and libraries
+│   │   ├── api.ts                  # API client
+│   │   ├── utils.ts                # General utility functions
+│   │   └── ...
+│   ├── types/                      # TypeScript type definitions
+│   │   ├── course.ts
+│   │   ├── user.ts
+│   │   └── ...
+│   └── styles/                     # Global styles
+│       └── globals.css             # Tailwind imports and global styles
