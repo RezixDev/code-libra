@@ -4,7 +4,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/nextjs_project_visual_test_Homepage_0_body_0_phone.png",
-        "test": "../bitmaps_test/20250328-224948/nextjs_project_visual_test_Homepage_0_body_0_phone.png",
+        "test": "../bitmaps_test/20250328-234451/nextjs_project_visual_test_Homepage_0_body_0_phone.png",
         "selector": "body",
         "fileName": "nextjs_project_visual_test_Homepage_0_body_0_phone.png",
         "label": "Homepage",
@@ -19,18 +19,18 @@ report({
             "width": 0,
             "height": 0
           },
-          "rawMisMatchPercentage": 1.564417791104448,
+          "rawMisMatchPercentage": 1.5592203898050974,
           "misMatchPercentage": "1.56",
-          "analysisTime": 11
+          "analysisTime": 10
         },
-        "diffImage": "../bitmaps_test/20250328-224948/failed_diff_nextjs_project_visual_test_Homepage_0_body_0_phone.png"
+        "diffImage": "../bitmaps_test/20250328-234451/failed_diff_nextjs_project_visual_test_Homepage_0_body_0_phone.png"
       },
       "status": "fail"
     },
     {
       "pair": {
         "reference": "../bitmaps_reference/nextjs_project_visual_test_Homepage_0_body_1_tablet.png",
-        "test": "../bitmaps_test/20250328-224948/nextjs_project_visual_test_Homepage_0_body_1_tablet.png",
+        "test": "../bitmaps_test/20250328-234451/nextjs_project_visual_test_Homepage_0_body_1_tablet.png",
         "selector": "body",
         "fileName": "nextjs_project_visual_test_Homepage_0_body_1_tablet.png",
         "label": "Homepage",
@@ -45,18 +45,18 @@ report({
             "width": 0,
             "height": 0
           },
-          "rawMisMatchPercentage": 0.8172353108723959,
-          "misMatchPercentage": "0.82",
+          "rawMisMatchPercentage": 0.8076985677083334,
+          "misMatchPercentage": "0.81",
           "analysisTime": 20
         },
-        "diffImage": "../bitmaps_test/20250328-224948/failed_diff_nextjs_project_visual_test_Homepage_0_body_1_tablet.png"
+        "diffImage": "../bitmaps_test/20250328-234451/failed_diff_nextjs_project_visual_test_Homepage_0_body_1_tablet.png"
       },
       "status": "fail"
     },
     {
       "pair": {
         "reference": "../bitmaps_reference/nextjs_project_visual_test_Homepage_0_body_2_desktop.png",
-        "test": "../bitmaps_test/20250328-224948/nextjs_project_visual_test_Homepage_0_body_2_desktop.png",
+        "test": "../bitmaps_test/20250328-234451/nextjs_project_visual_test_Homepage_0_body_2_desktop.png",
         "selector": "body",
         "fileName": "nextjs_project_visual_test_Homepage_0_body_2_desktop.png",
         "label": "Homepage",
@@ -71,11 +71,11 @@ report({
             "width": 0,
             "height": 0
           },
-          "rawMisMatchPercentage": 0.30994405864197533,
+          "rawMisMatchPercentage": 0.30632716049382713,
           "misMatchPercentage": "0.31",
-          "analysisTime": 39
+          "analysisTime": 37
         },
-        "diffImage": "../bitmaps_test/20250328-224948/failed_diff_nextjs_project_visual_test_Homepage_0_body_2_desktop.png"
+        "diffImage": "../bitmaps_test/20250328-234451/failed_diff_nextjs_project_visual_test_Homepage_0_body_2_desktop.png"
       },
       "status": "fail"
     }
