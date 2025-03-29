@@ -1,6 +1,7 @@
 //---------- Header.tsx ----------//
 // src/components/layout/Header.tsx
 import React from "react";
+import Link from "next/link";
 import { Menu, User } from "lucide-react";
 
 interface HeaderProps {
@@ -14,11 +15,15 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
 				<button onClick={onMenuToggle} className="mr-3">
 					<Menu size={24} />
 				</button>
-				<h1 className="text-lg font-bold">CodeLearn</h1>
+				<Link href="/" className="text-lg font-bold">
+					CodeLearn
+				</Link>
 			</div>
-			<div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center">
-				<User size={18} className="text-white" />
-			</div>
+			<Link href="/profile">
+				<div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center cursor-pointer hover:bg-indigo-400 transition-colors">
+					<User size={18} className="text-white" />
+				</div>
+			</Link>
 		</header>
 	);
 };

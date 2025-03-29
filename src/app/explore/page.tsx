@@ -1,14 +1,16 @@
-import CourseCard from "../../components/ui/CourseCard";
-import SearchBar from "../../components/ui/SearchBar";
-import SectionHeader from "../../components/ui/SectionHeader";
+import CourseCard from "@/components/courses/CourseCard";
+import SearchBar from "@/components/ui/SearchBar";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 // Mock Data (replace with actual data fetching later)
 interface Course {
 	id: string;
 	title: string;
 	description: string;
-	imageUrl?: string;
-	tags?: string[];
+	level: "Beginner" | "Intermediate" | "Advanced";
+	totalLessons: number;
+	completedLessons: number;
+	tags: string[];
 }
 
 const allCourses: Course[] = [
@@ -16,28 +18,36 @@ const allCourses: Course[] = [
 		id: "ts-basics",
 		title: "TypeScript Fundamentals",
 		description: "Master the basics of TypeScript.",
-		imageUrl: "/images/typescript-logo.png",
+		level: "Beginner",
+		totalLessons: 10,
+		completedLessons: 0,
 		tags: ["TypeScript", "Beginner"],
 	},
 	{
 		id: "react-hooks",
 		title: "React Hooks Deep Dive",
-		description: "Understand useState, useEffect, etc.",
-		imageUrl: "/images/react-logo.png",
+		description: "Understand useState, useEffect, and other React hooks.",
+		level: "Intermediate",
+		totalLessons: 8,
+		completedLessons: 0,
 		tags: ["React", "Intermediate"],
 	},
 	{
 		id: "nextjs-app",
 		title: "Next.js App Router",
-		description: "Build modern web apps.",
-		imageUrl: "/images/nextjs-logo.svg",
+		description: "Build modern web apps with Next.js and the App Router.",
+		level: "Advanced",
+		totalLessons: 12,
+		completedLessons: 0,
 		tags: ["Next.js", "Framework"],
 	},
 	{
 		id: "tailwind-css",
 		title: "Tailwind CSS Essentials",
-		description: "Utility-first CSS framework.",
-		imageUrl: "/images/tailwind-logo.svg",
+		description: "Learn the utility-first CSS framework for rapid UI development.",
+		level: "Beginner",
+		totalLessons: 6,
+		completedLessons: 0,
 		tags: ["CSS", "Styling"],
 	},
 	// ... more courses
@@ -81,7 +91,7 @@ export default function ExplorePage() {
 			</div>
 
 			{/* Course List */}
-			<div className="space-y-4">
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{allCourses.map((course) => (
 					<CourseCard key={course.id} course={course} />
 				))}

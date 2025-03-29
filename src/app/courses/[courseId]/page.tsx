@@ -19,6 +19,7 @@ import { useRouter, useParams } from "next/navigation";
 
 // Types
 import { Course } from "@/components/courses/CourseCard";
+import CourseSvgImage from "@/components/ui/CourseSvgImage";
 
 // Sample data - in a real app, this would come from an API
 const COURSES_DATA: Record<
@@ -44,7 +45,6 @@ const COURSES_DATA: Record<
 		description:
 			"Learn the core concepts of JavaScript programming from the ground up. Perfect for beginners who want to start their coding journey.",
 		level: "Beginner",
-		imageUrl: "/assets/images/courses/javascript-fundamentals.jpg",
 		totalLessons: 12,
 		completedLessons: 5,
 		currentLessonId: "js-arrays",
@@ -136,7 +136,6 @@ const COURSES_DATA: Record<
 		description:
 			"Master React's powerful Hooks API and learn how to manage state effectively across your application with Context.",
 		level: "Intermediate",
-		imageUrl: "/assets/images/courses/react-hooks.jpg",
 		totalLessons: 8,
 		completedLessons: 2,
 		currentLessonId: "useeffect-hook",
@@ -240,14 +239,12 @@ export default function CourseDetailPage() {
 			{/* Course Header */}
 			<div className="relative">
 				<div className="h-48 bg-gray-300">
-					{courseData.imageUrl && (
-						<Image
-							src={courseData.imageUrl}
-							alt={courseData.title}
-							fill
-							className="object-cover"
-						/>
-					)}
+					<CourseSvgImage
+						courseId={courseData.id}
+						title={courseData.title}
+						level={courseData.level}
+						className="w-full h-full object-cover"
+					/>
 					<div className="absolute top-0 left-0 w-full p-4">
 						<button
 							onClick={() => router.back()}

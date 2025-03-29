@@ -10,6 +10,7 @@ import {
 	ChevronRight,
 	PlayCircle,
 } from "lucide-react";
+import CourseSvgImage from "@/components/ui/CourseSvgImage";
 
 const MobileProgrammingApp = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,28 +20,25 @@ const MobileProgrammingApp = () => {
 
 	const courses = [
 		{
-			id: 1,
+			id: "js-fundamentals",
 			title: "JavaScript Fundamentals",
 			level: "Beginner",
 			lessonsCount: 12,
 			completedLessons: 5,
-			image: "/api/placeholder/250/150",
 		},
 		{
-			id: 2,
+			id: "react-hooks",
 			title: "React Hooks & Context",
 			level: "Intermediate",
 			lessonsCount: 8,
 			completedLessons: 2,
-			image: "/api/placeholder/250/150",
 		},
 		{
-			id: 3,
+			id: "typescript-advanced",
 			title: "TypeScript Advanced Types",
 			level: "Advanced",
 			lessonsCount: 10,
 			completedLessons: 0,
-			image: "/api/placeholder/250/150",
 		},
 	];
 
@@ -185,11 +183,14 @@ const MobileProgrammingApp = () => {
 												key={course.id}
 												className="flex bg-gray-50 rounded-xl overflow-hidden shadow-sm"
 											>
-												<img
-													src={course.image}
-													alt={course.title}
-													className="w-24 h-24 object-cover"
-												/>
+												<div className="w-24 h-24">
+													<CourseSvgImage
+														courseId={course.id}
+														title={course.title}
+														level={course.level}
+														className="w-full h-full"
+													/>
+												</div>
 												<div className="p-3 flex-1">
 													<div className="flex justify-between items-start">
 														<h3 className="font-medium text-sm">

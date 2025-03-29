@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PlayCircle } from "lucide-react";
+import CourseSvgImage from "@/components/ui/CourseSvgImage";
 
 // TypeScript interfaces
 export interface Course {
@@ -10,7 +11,7 @@ export interface Course {
 	title: string;
 	description: string;
 	level: "Beginner" | "Intermediate" | "Advanced";
-	imageUrl: string;
+	imageUrl?: string; // Make optional since we'll use SVG placeholder
 	totalLessons: number;
 	completedLessons: number;
 	currentLessonId?: string;
@@ -60,13 +61,28 @@ const CourseCard: React.FC<CourseCardProps> = ({
 			<Link href={`/courses/${id}`} className={`block ${className}`}>
 				<div className="flex bg-gray-50 rounded-xl overflow-hidden shadow-sm transition-all hover:shadow-md">
 					<div className="relative w-24 h-24">
-						<Image
-							src={imageUrl}
-							alt={title}
-							fill
-							className="object-cover"
-							sizes="96px"
-						/>
+						{imageUrl ? (
+							<div className={`w-full h-full flex items-center justify-center p-3 ${
+								title.includes("JavaScript") ? "bg-yellow-50" :
+								title.includes("React") ? "bg-blue-50" :
+								title.includes("TypeScript") ? "bg-blue-50" : "bg-gray-100"
+							}`}>
+								<Image
+									src={imageUrl}
+									alt={title}
+									width={50}
+									height={50}
+									className="object-contain"
+								/>
+							</div>
+						) : (
+							<CourseSvgImage
+								courseId={id}
+								title={title}
+								level={level}
+								className="object-cover"
+							/>
+						)}
 					</div>
 					<div className="p-3 flex-1">
 						<div className="flex justify-between items-start">
@@ -132,13 +148,28 @@ const CourseCard: React.FC<CourseCardProps> = ({
 			className={`bg-white rounded-xl shadow-md overflow-hidden transition-all hover:shadow-lg ${className}`}
 		>
 			<div className="relative h-40">
-				<Image
-					src={imageUrl}
-					alt={title}
-					fill
-					className="object-cover"
-					sizes="(max-width: 768px) 100vw, 384px"
-				/>
+				{imageUrl ? (
+					<div className={`w-full h-full flex items-center justify-center ${
+						title.includes("JavaScript") ? "bg-yellow-50" :
+						title.includes("React") ? "bg-blue-50" :
+						title.includes("TypeScript") ? "bg-blue-50" : "bg-gray-100"
+					}`}>
+						<Image
+							src={imageUrl}
+							alt={title}
+							width={150}
+							height={150}
+							className="object-contain p-4"
+						/>
+					</div>
+				) : (
+					<CourseSvgImage
+						courseId={id}
+						title={title}
+						level={level}
+						className="object-cover"
+					/>
+				)}
 				<div className="absolute top-2 right-2 bg-white px-2 py-1 rounded-full text-xs font-medium text-indigo-700">
 					{level}
 				</div>
