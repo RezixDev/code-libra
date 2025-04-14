@@ -9,31 +9,37 @@
     "lint": "next lint",
     "visual:reference": "backstop reference",
     "visual:test": "backstop test",
-    "visual:approve": "backstop approve"
+    "visual:approve": "backstop approve",
+    "prisma:seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts",
+    "enroll": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/enroll-user.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.12.12",
+    "@neondatabase/serverless": "^1.0.0",
     "@phosphor-icons/react": "^2.1.7",
+    "@prisma/client": "^6.5.0",
     "i": "^0.3.7",
     "lucide-react": "^0.484.0",
     "next": "15.2.4",
     "npm": "^11.2.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
+    "@eslint/eslintrc": "^3.3.1",
     "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.0.17",
     "@tailwindcss/typography": "^0.5.16",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/node": "^20.17.28",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
     "backstopjs": "^6.3.25",
-    "eslint": "^9",
+    "eslint": "^9.23.0",
     "eslint-config-next": "15.2.4",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "prisma": "^6.5.0",
+    "tailwindcss": "^4.0.17",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
   },
   "packageManager": "pnpm@9.15.2+sha512.93e57b0126f0df74ce6bff29680394c0ba54ec47246b9cf321f0121d8d9bb03f750a705f24edc3c1180853afd7c2c3b94196d0a3d53d3e069d9e2793ef11f321"
 }

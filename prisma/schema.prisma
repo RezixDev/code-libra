@@ -1,0 +1,121 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+    // prisma/schema.prisma
+
+    generator client {
+      provider = "prisma-client-js"
+    }
+
+    datasource db {
+      provider = "postgresql"
+      url      = env("DATABASE_URL")
+    }
+
+    model User {
+      id            String    @id @unique // Clerk User ID
+      email         String    @unique
+      name          String?
+      createdAt     DateTime  @default(now())
+      updatedAt     DateTime  @updatedAt
+      // Add other profile fields if needed (bio, joinedDate etc.)
+      // Add relations
+      enrollments   Enrollment[]
+      achievements  UserAchievement[]
+      progress      Progress[]
+      // add progress, achievements etc.
+    }
+
+    enum CourseLevel {
+      BEGINNER
+      INTERMEDIATE
+      ADVANCED
+    }
+
+    model Course {
+      id              String    @id @default(cuid())
+      title           String
+      description     String
+      level           CourseLevel // Use the enum here
+      imageUrl        String?
+      createdAt       DateTime  @default(now())
+      updatedAt       DateTime  @updatedAt
+      // Add relations
+      lessons         Lesson[]
+      enrollments     Enrollment[]
+      tags            String[] // Store as an array of strings
+    }
+
+    model Lesson {
+      id          String    @id @default(cuid())
+      title       String
+      content     String // Uncommented and defined as String
+      order       Int       // Order within the course
+      courseId    String
+      createdAt   DateTime  @default(now())
+      updatedAt   DateTime  @updatedAt
+      // Add relations
+      course      Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+      progress    Progress[]
+      // Add progress relation
+    }
+
+    model Enrollment {
+      id              String    @id @default(cuid())
+      userId          String
+      courseId        String
+      enrolledAt      DateTime  @default(now())
+      completedAt     DateTime?
+      // Add progress fields (e.g., completedLessonIds String[])
+      // Add relations
+      user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+      course          Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+      @@unique([userId, courseId]) // User can enroll in a course only once
+    }
+
+    // Add models for Progress, Achievements, etc. as needed
+
+    model Progress {
+      id          String    @id @default(cuid())
+      userId      String
+      lessonId    String
+      completed   Boolean   @default(false)
+      completedAt DateTime? // Timestamp when the lesson was completed
+      createdAt   DateTime  @default(now())
+      updatedAt   DateTime  @updatedAt
+
+      // Add relations
+      user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+      lesson      Lesson    @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+      @@unique([userId, lessonId]) // Ensure one progress record per user per lesson
+    }
+
+    model Achievement {
+      id          String    @id @default(cuid())
+      name        String    @unique
+      description String
+      iconUrl     String?   // Optional URL for an achievement icon
+      createdAt   DateTime  @default(now())
+      updatedAt   DateTime  @updatedAt
+
+      // Relation to users who earned this achievement
+      users       UserAchievement[]
+    }
+
+    model UserAchievement {
+      id            String      @id @default(cuid())
+      userId        String
+      achievementId String
+      earnedAt      DateTime    @default(now())
+
+      // Relations
+      user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+      achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+
+      @@unique([userId, achievementId]) // User can earn an achievement only once
+    }

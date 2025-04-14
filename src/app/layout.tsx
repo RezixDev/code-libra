@@ -16,7 +16,7 @@ import {
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'CodeLearn - Learn Programming on Mobile',
+  title: 'CodeLibra - Learn Programming on Mobile',
   description: 'Master programming with our interactive mobile learning platform',
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   themeColor: '#4f46e5',

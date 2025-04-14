@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
 					<Menu size={24} />
 				</button>
 				<Link href="/" className="text-lg font-bold hover:opacity-90 transition-opacity">
-					CodeLearn
+				CodeLibra
 				</Link>
 			</div>
 			<div className="flex items-center space-x-3">

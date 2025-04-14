@@ -17,7 +17,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose }) => {
 			}`}
 		>
 			<div className="p-4 text-white flex justify-between">
-				<span className="font-bold text-xl">CodeLearn</span>
+				<span className="font-bold text-xl">CodeLibra</span>
 				<button onClick={onClose} className="text-white">
 					<X size={24} />
 				</button>

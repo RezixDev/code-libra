@@ -1,7 +1,7 @@
 # CodeLibra - Mobile Programming Learning App
 
 
-CodeLearn is a comprehensive mobile-first web application designed to help users learn programming through interactive lessons, hands-on coding practice, and community engagement. Built with modern web technologies like Next.js, TypeScript, and Tailwind CSS, CodeLibra offers a seamless learning experience across devices.
+CodeLibra is a comprehensive mobile-first web application designed to help users learn programming through interactive lessons, hands-on coding practice, and community engagement. Built with modern web technologies like Next.js, TypeScript, and Tailwind CSS, CodeLibra offers a seamless learning experience across devices.
 
 ## 🚀 Features
 
@@ -20,7 +20,10 @@ CodeLearn is a comprehensive mobile-first web application designed to help users
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **UI Components**: [Lucide React](https://lucide.dev/guide/packages/lucide-react)
 - **State Management**: React Context API
-- **Authentication**: Custom Auth Provider (JWT-based)
+- **Database**: 
+  - [PostgreSQL](https://www.postgresql.org/) hosted on [Neon Tech](https://neon.tech/)
+  - [Prisma](https://www.prisma.io/) as ORM
+- **Authentication**: [Clerk](https://clerk.dev/) for user management
 - **Testing**: 
   - [Jest](https://jestjs.io/) for unit tests
   - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for component tests
@@ -31,9 +34,12 @@ CodeLearn is a comprehensive mobile-first web application designed to help users
 ## 🏗️ Project Structure
 
 ```
-codelearn/
+codelibra/
 ├── .github/                  # GitHub workflows and templates
 ├── public/                   # Static assets
+├── prisma/                   # Prisma schema and migrations
+│   ├── schema.prisma         # Database schema
+│   └── migrations/           # Database migrations
 ├── src/
 │   ├── app/                  # Next.js App Router pages
 │   ├── components/           # Reusable UI components
@@ -46,6 +52,7 @@ codelearn/
 │   ├── contexts/             # React Context providers
 │   ├── hooks/                # Custom React hooks
 │   ├── lib/                  # Utility functions and API clients
+│   │   └── prisma.ts         # Prisma client instance
 │   ├── types/                # TypeScript type definitions
 │   └── styles/               # Global styles
 ├── tests/
@@ -63,13 +70,14 @@ codelearn/
 - Node.js 18.x or newer
 - npm or yarn
 - Git
+- PostgreSQL (local development) or Neon Tech account
 
 ### Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/codelearn.git
-   cd codelearn
+   git clone https://github.com/yourusername/codelibra.git
+   cd codelibra
    ```
 
 2. Install dependencies:
@@ -82,16 +90,36 @@ codelearn/
 3. Create a `.env.local` file in the root directory with the following variables:
    ```
    NEXT_PUBLIC_API_URL=http://localhost:3000/api
+   
+   # Database
+   DATABASE_URL="postgresql://username:password@localhost:5432/codelibra"
+   # Or for Neon Tech
+   # DATABASE_URL="postgres://user:password@ep-example-id.region.aws.neon.tech/codelibra?sslmode=require"
+   
+   # Clerk
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+   CLERK_SECRET_KEY=sk_test_...
+   NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+   NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+   NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+   NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
    ```
 
-4. Start the development server:
+4. Set up the database:
+   ```bash
+   npx prisma migrate dev --name init
+   # or
+   yarn prisma migrate dev --name init
+   ```
+
+5. Start the development server:
    ```bash
    npm run dev
    # or
    yarn dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
+6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
 ## 🧪 Testing
 
@@ -142,8 +170,18 @@ yarn build
 
 ## 🚢 Deployment
 
-The application can be deployed to any platform that supports Next.js applications, such as Vercel, Netlify, or a custom server.
+The application can be deployed to any platform that supports Next.js applications, such as Vercel, Netlify, or a custom server. For database deployment, we use Neon Tech for scalable PostgreSQL.
 
+### Database Setup for Production
+
+1. Create a new database on [Neon Tech](https://neon.tech/)
+2. Update the `DATABASE_URL` in your production environment variables
+3. Run migrations:
+   ```bash
+   npx prisma migrate deploy
+   # or
+   yarn prisma migrate deploy
+   ```
 
 ## 🧩 Future Enhancements
 
@@ -153,6 +191,8 @@ The application can be deployed to any platform that supports Next.js applicatio
 - [ ] Group learning and study rooms
 - [ ] Advanced analytics and personalized learning paths
 - [ ] Integration with GitHub for project-based learning
+- [ ] Enhanced database performance optimizations
+- [ ] Multi-tenant database architecture for enterprise plans
 
 
 ## 👏 Acknowledgements
@@ -160,5 +200,9 @@ The application can be deployed to any platform that supports Next.js applicatio
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- [Prisma Documentation](https://www.prisma.io/docs/)
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+- [Clerk Documentation](https://clerk.dev/docs)
+- [Neon Tech Documentation](https://neon.tech/docs)
 - [BackstopJS Documentation](https://github.com/garris/BackstopJS#readme)
 - Icon library provided by [Lucide](https://lucide.dev/)

@@ -61,7 +61,7 @@ const MobileProgrammingApp = () => {
 					}`}
 				>
 					<div className="p-4 text-white flex justify-between">
-						<span className="font-bold text-xl">CodeLearn</span>
+						<span className="font-bold text-xl">CodeLibra</span>
 						<button onClick={toggleMenu} className="text-white">
 							<X size={24} />
 						</button>
@@ -130,7 +130,7 @@ const MobileProgrammingApp = () => {
 							<button onClick={toggleMenu} className="mr-3">
 								<Menu size={24} />
 							</button>
-							<h1 className="text-lg font-bold">CodeLearn</h1>
+							<h1 className="text-lg font-bold">CodeLibra</h1>
 						</div>
 						<div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center">
 							<User size={18} className="text-white" />
